@@ -374,10 +374,21 @@ export class TodoControllerApiResponseProcessor {
      public async createTodoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -432,10 +443,21 @@ export class TodoControllerApiResponseProcessor {
      public async getTodosWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -461,10 +483,21 @@ export class TodoControllerApiResponseProcessor {
      public async getTodos1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -519,10 +552,21 @@ export class TodoControllerApiResponseProcessor {
      public async updateTodoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

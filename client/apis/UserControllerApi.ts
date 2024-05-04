@@ -1,16 +1,16 @@
-import {BaseAPIRequestFactory, RequiredError, COLLECTION_FORMATS} from './baseapi';
+import {BaseAPIRequestFactory, RequiredError} from './baseapi';
 import {Configuration} from '../configuration';
-import {RequestContext, HttpMethod, ResponseContext, HttpFile, HttpInfo} from '../http/http';
-import {ObjectSerializer, ResponseDTOHttpStatusEnum} from '../models/ObjectSerializer';
+import {HttpInfo, HttpMethod, RequestContext, ResponseContext} from '../http/http';
+import {ObjectSerializer} from '../models/ObjectSerializer';
 import {ApiException} from './exception';
-import {canConsumeForm, isCodeInRange} from '../util';
+import {isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { ResponseDTO } from '../models/ResponseDTO';
-import { UserLoginDTO } from '../models/UserLoginDTO';
-import { UserRegisterDTO } from '../models/UserRegisterDTO';
-import { UserUpdateRoleDTO } from '../models/UserUpdateRoleDTO';
+import {ResponseDTO} from '../models/ResponseDTO';
+import {UserLoginDTO} from '../models/UserLoginDTO';
+import {UserRegisterDTO} from '../models/UserRegisterDTO';
+import {UserUpdateRoleDTO} from '../models/UserUpdateRoleDTO';
 
 /**
  * no description
@@ -268,9 +268,6 @@ export class UserControllerApiResponseProcessor {
                     body[key] = parsedBody[key];
                 }
             }
-
-            // Log the parsed ResponseDTO
-            console.log(body);
 
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }

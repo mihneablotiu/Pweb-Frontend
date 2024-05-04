@@ -1,15 +1,12 @@
-import { useState } from "react";
 import NavBar from "./navBar/component.tsx";
-import TodoLists from "./todoLists/component.tsx";
-import Feedback from "./feedback/component.tsx";
+import {Outlet} from "react-router";
+import "./component.css"
 
 function Home() {
-    const [activeComponent, setActiveComponent] = useState("TodoLists");
-
     return (
-        <div>
-            <NavBar setActiveComponent={setActiveComponent} />
-            {activeComponent === "TodoLists" ? <TodoLists /> : <Feedback />}
+        <div className="home-container">
+            <NavBar />
+            <Outlet />
         </div>
     );
 }

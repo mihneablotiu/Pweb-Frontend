@@ -39,7 +39,7 @@ function Login() {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', flex: 1 }}>
             <main style={{ flex: 1, overflow: 'auto' }}>
                 <Grid container justifyContent="center" alignItems="center" style={{ minHeight: 'calc(100vh - 128px)', padding: '20px' }}>
                     <Grid item xs={12} sm={6}>

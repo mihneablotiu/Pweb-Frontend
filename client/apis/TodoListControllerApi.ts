@@ -384,10 +384,21 @@ export class TodoListControllerApiResponseProcessor {
      public async getTodoListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -413,12 +424,24 @@ export class TodoListControllerApiResponseProcessor {
      public async getTodoList1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -442,10 +465,21 @@ export class TodoListControllerApiResponseProcessor {
      public async getTodoListsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ResponseDTO >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ResponseDTO = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ResponseDTO", ""
-            ) as ResponseDTO;
+            const responseBody = await response.body.text();
+            const parsedBody = ObjectSerializer.parse(responseBody, contentType);
+
+            // Create a new ResponseDTO instance and set default values
+            const body: ResponseDTO = new ResponseDTO();
+            body.message = parsedBody.message; // Set a default message
+            body.httpStatus = parsedBody.httpStatus; // Set a default HTTP status
+
+            // Map additional dynamic fields from the parsed body
+            for (const key in parsedBody) {
+                if (Object.prototype.hasOwnProperty.call(parsedBody, key)) {
+                    body[key] = parsedBody[key];
+                }
+            }
+
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

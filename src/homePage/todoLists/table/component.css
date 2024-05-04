@@ -1,0 +1,22 @@
+.table-container {
+    margin-top: 20px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 20px;
+}
+
+.add-button {
+    width: 10%;
+    align-self: flex-end;
+}
+
+.pagination-container {
+    margin-top: 30px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}

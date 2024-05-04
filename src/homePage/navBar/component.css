@@ -1,0 +1,20 @@
+/* NavBar.css */
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FF7D33; /* Set background color to orange */
+    row-gap: 20px;
+    width: 20%;
+    padding-top: 20px;
+}
+
+.navbar-header {
+    color: white; /* Set text color to white */
+    text-align: center;
+}
+
+.navbar-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}

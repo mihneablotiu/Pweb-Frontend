@@ -5,6 +5,9 @@ import App from "./landingPage/component.tsx";
 import Login from "./loginPage/component.tsx";
 import Home from "./homePage/component.tsx";
 import withAuth from "./withAuth.tsx";
+import TodoLists from "./homePage/todoLists/component.tsx";
+import Feedback from "./homePage/feedback/component.tsx";
+import Todos from "./homePage/todos/component.tsx";
 
 function AppRoutes() {
     const AuthHome = withAuth(Home);
@@ -16,7 +19,11 @@ function AppRoutes() {
                   <Route index element={<Login /> } />
                   <Route path="/register" element={<Register /> } />
                   <Route path="/login" element={<Login /> } />
-                  <Route path="/home" element={ <AuthHome /> } />
+                  <Route path="/home" element={ <AuthHome /> }>
+                      <Route path="todoLists/:id" element={ <Todos /> } />
+                      <Route path="todoLists" element={ <TodoLists /> } />
+                      <Route path="feedback" element={ <Feedback /> } />
+                  </Route>
               </Route>
           </Routes>
       </BrowserRouter>
